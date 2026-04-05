@@ -11,11 +11,17 @@ const Playlist = () => {
     try {
       const res = await fetch('/api/sync');
       const data = await res.json();
+      
+      if (!res.ok) {
+        alert(`Sync failed: ${data.message || 'Server error'} - ${data.error || ''}`);
+        return;
+      }
+      
       alert(`Sync successful! Found ${data.count} songs.`);
       fetchSongs(); // Re-fetch the songs from the local context
     } catch (err) {
       console.error(err);
-      alert('Sync failed.');
+      alert('Sync failed connection error.');
     }
   };
 
