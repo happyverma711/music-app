@@ -9,8 +9,11 @@ export async function GET() {
     has_CLOUDINARY_CLOUD_NAME: !!process.env.CLOUDINARY_CLOUD_NAME,
     has_CLOUDINARY_API_KEY: !!process.env.CLOUDINARY_API_KEY,
     has_CLOUDINARY_API_SECRET: !!process.env.CLOUDINARY_API_SECRET,
+    // Add Vercel internal info
+    vercel_env: process.env.VERCEL_ENV || "NOT FOUND",
+    node_env: process.env.NODE_ENV || "NOT FOUND",
     // Helping you see what Vercel *does* see
-    hint: "If all of these are false, your Vercel project is not receiving any custom environment variables."
+    hint: "If vercel_env is 'NOT FOUND', something is very wrong with the deployment environment."
   };
   
   return NextResponse.json(envInfo);
