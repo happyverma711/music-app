@@ -10,6 +10,7 @@ export async function GET() {
     const songs = await Song.find().sort({ createdAt: -1 });
     return NextResponse.json(songs);
   } catch (error) {
-    return NextResponse.json({ message: 'Error fetching songs', error }, { status: 500 });
+    console.error('Error fetching songs:', error);
+    return NextResponse.json({ message: 'Error fetching songs', error: error.message }, { status: 500 });
   }
 }
