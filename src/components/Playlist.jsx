@@ -30,7 +30,7 @@ const Playlist = () => {
     );
   }
 
-  const profilePic = "/assets/Happy_Verma.jpeg";
+  const profilePic = "/assets/Happy.jpeg";
 
   return (
     <div className="flex-1 min-h-screen pb-[150px] relative overflow-x-hidden">
