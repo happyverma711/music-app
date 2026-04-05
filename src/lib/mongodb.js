@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URL;
 
 if (!MONGO_URI) {
   console.error('MONGO_URI is not defined. Please set it in your environment variables.');
