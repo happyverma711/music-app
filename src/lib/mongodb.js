@@ -2,11 +2,6 @@ import mongoose from 'mongoose';
 
 const MONGO_URI = process.env.MONGO_URL;
 
-if (!MONGO_URI) {
-  console.error('MONGO_URI is not defined. Please set it in your environment variables.');
-  throw new Error('Please define the MONGO_URI environment variable');
-}
-
 let cached = global.mongoose;
 
 if (!cached) {
@@ -14,6 +9,10 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  if (!MONGO_URI) {
+    console.error('MONGO_URI is not defined. Please set it in your environment variables.');
+    throw new Error('Please define the MONGO_URI environment variable');
+  }
   if (cached.conn) {
     return cached.conn;
   }
